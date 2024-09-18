@@ -23,11 +23,12 @@ public class SecurityConfig {
             ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl)requests.anyRequest()).authenticated();
         });
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        http.formLogin(Customizer.withDefaults());
+//        http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
         return http.build();
     }
 
+    @Bean
     public UserDetailsService userDetailsService(){
         UserDetails user1 = User.withUsername("user1")
                 .password("{noop}user123")
